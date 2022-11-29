@@ -3,7 +3,7 @@ import CommentContainer from "./CommentContainer";
 import React from "react";
 import agent from "../../agent";
 import { connect } from "react-redux";
-import placeholder from '../../imgs/placeholder.png'
+import placeholder from "../../imgs/placeholder.png"
 import marked from "marked";
 import {
   ITEM_PAGE_LOADED,
