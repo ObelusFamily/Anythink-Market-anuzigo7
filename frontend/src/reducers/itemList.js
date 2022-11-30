@@ -55,7 +55,7 @@ const reducer = (state = {}, action) => {
         itemsCount: action.payload.itemsCount,
         title: action.title,
         // currentPage: 0,
-      }
+      };
     case HOME_PAGE_LOADED:
       return {
         ...state,
