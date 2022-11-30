@@ -2,12 +2,14 @@ import Banner from "./Banner";
 import MainView from "./MainView";
 import React from "react";
 import Tags from "./Tags";
+import Search from "./Search";
 import agent from "../../agent";
 import { connect } from "react-redux";
 import {
   HOME_PAGE_LOADED,
   HOME_PAGE_UNLOADED,
   APPLY_TAG_FILTER,
+  APPLY_TITLE_FILTER
 } from "../../constants/actionTypes";
 
 const Promise = global.Promise;
@@ -19,6 +21,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  onChangeTitle: (title, payload) =>
+    dispatch({type: APPLY_TITLE_FILTER, title, payload}),
   onClickTag: (tag, pager, payload) =>
     dispatch({ type: APPLY_TAG_FILTER, tag, pager, payload }),
   onLoad: (tab, pager, payload) =>
@@ -46,7 +50,7 @@ class Home extends React.Component {
     return (
       <div className="home-page">
         <Banner />
-
+        <Search onChangeTitle={this.props.onChangeTitle}/>
         <div className="container page">
           <Tags tags={this.props.tags} onClickTag={this.props.onClickTag} />
           <MainView />
