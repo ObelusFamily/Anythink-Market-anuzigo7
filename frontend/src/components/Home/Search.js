@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import agent from "../../agent";
 
 export const Search = (props) => {
@@ -13,32 +13,41 @@ export const Search = (props) => {
     }
   };
 
+  const [searchOpen, setSearchOpen] = useState(false);
+
   return (
     <>
       <div className="container">
         <div className="row">
-          <h3 className="col text-right">A place to get</h3>
-          <div className="col input-group mb-3">
-            <input
-              onChange={handleChange}
-              id="search-box"
-              type="text"
-              style={{ border: "0px white solid" }}
-              className=" form-control"
-              placeholder="What is it that you truly desire?"
-            />
-            <div
-              style={{ border: "0px white solid" }}
-              className="input-group-append"
-            >
-              <span
+          <h3 className="col text-right">
+            A place to{" "}
+            <span onClick={() => setSearchOpen(!searchOpen)} id="get-part">
+              get
+            </span>
+          </h3>
+          {searchOpen && (
+            <div className="col input-group mb-3">
+              <input
+                onChange={handleChange}
+                id="search-box"
+                type="text"
                 style={{ border: "0px white solid" }}
-                className="input-group-text bg-white"
+                className=" form-control"
+                placeholder="What is it that you truly desire?"
+              />
+              <div
+                style={{ border: "0px white solid" }}
+                className="input-group-append"
               >
-                <i style={{ color: "purple" }} class="bi bi-search "></i>
-              </span>
+                <span
+                  style={{ border: "0px white solid" }}
+                  className="input-group-text bg-white"
+                >
+                  <i style={{ color: "purple" }} class="bi bi-search "></i>
+                </span>
+              </div>
             </div>
-          </div>
+          )}
           <h3 className="col text-left"> the cool stuff.</h3>
         </div>
       </div>
